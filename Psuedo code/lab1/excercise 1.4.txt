@@ -1,0 +1,19 @@
+BEGIN
+	DECLARE rem,res,temp,num AS INTEGER
+	INITIALIZE res=0
+	
+	PROMPT " ENTER A NUMBER" ///AND STORE IN NUM
+	ACCEPT NUM
+	temp=num
+	FOR num!=0
+		rem=num%10
+		res=res+(rem*rem*rem)
+		num=num/10
+	END FOR
+	IF temp=res
+		PRINT "GIVEN NUMBER IS AN ARMSTRONG NUMBER"
+	ELSE
+		PRINT "GIVEN NUMBER IS NOT AN ARMSTRONG NUMBER"
+
+	END IF
+END

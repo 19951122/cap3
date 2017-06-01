@@ -1,0 +1,73 @@
+/*************************************************************************************
+*Filename 		= exercise2.4
+*Author Name		= Bhuvan
+*Version		= 1
+*Created On 		= 24/05/2017 
+*************************************************************************************/
+
+//definition of employee record
+RECORD Employee
+	DECLARE EmpId as INTEGER
+	DECLARE employmentType AS STRING
+END RECORD
+
+//start of the main program
+BEGIN
+	DECLARE emp[5] AS Employee
+	DECLARE leaves, TotalLeaves, index AS INTEGER
+
+	//input
+	FOR index 0 TO 4
+		PROMPT "Enter the EmployeeId" AND STORE IN emp[index].EmpId
+		validateID(emp[index].EmpID)
+		PROMPT "Enter the employmentType" AND STORE IN emp[index].employmentType
+		validateType(emp[index].employmentType)
+	END FOR
+
+EXCEPTION
+	WHEN noSuchID THEN
+		PRINT //errorMessage
+	WHEN noSuchType THEN
+		PRINT //errorMessage
+
+	//computations and output
+	FOR index= 0 to 4
+		IF(emp[index].employmentType=='PERMANENT') THEN
+			leaves=2;
+			TotalLeaves=leaves*12;
+		ELSE IF(emp[index].employmentType=='CONTRACT') THEN
+			leaves=1;
+			TotalLeaves=leaves*12;
+		END IF
+		PRINT "Employee Id :" , emp[index].EmpId
+		PRINT "Total Available Leaves are :", TotalLeaves
+	END FOR
+END
+
+/*********************************************************************************
+Sub routine name 			= validateID
+parameter 				= employID
+return type				= NULL
+description				= to validate the input employ ID
+*******************************************************************************/
+SUB validateID(empId)
+	IF (isDigits(empID))
+		RETURN
+	ELSE 
+		RAISE noSuchID(" Enter a valid employ ID")
+	END IF
+ENd SUB
+
+/******************************************************************************
+Sub routine name 			= validateType
+parameter 				= employType
+return type				= NULL
+description				= to validate the input employ Type
+******************************************************************************/
+SUB validateType(empType)
+	IF( empType == "PERMANENT" OR empType == "CONTRACT")
+		RETURN
+	ELSE
+		RAISE noSuchType("Enter enter permanent or contract")
+	END IF
+END SUB

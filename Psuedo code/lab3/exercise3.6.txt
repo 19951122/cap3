@@ -1,0 +1,73 @@
+/*******************************************************************
+Filename			= exercise3.6
+Author 				= akhil
+Description			= to sort an array and search the array for the given number
+Version				= 1
+Created on 			= 25/05/2017
+*******************************************************************/
+BEGIN 
+	DECLARE arr AS INTEGER ARRAY
+	DECLARE num AS INTEGER
+	DECLARE index AS INTEGER
+	FOR index = 0 TO 4
+		PROMPT "Enter a number"
+		ACCEPT arr[index]
+	END FOR
+	PROMPT "Enter the number to be searched"
+	ACCEPT num
+	arr = sortArray(arr, 5)
+	index = binarySearch(arr, 0, 5, num)
+	IF index != -1
+		PRINT "The number is found at the location :", index
+	ELSE 
+		PRINT "The number is not found"
+	END IF
+END 
+
+/*****************************************************************
+Sub-Routine Name 		= sortArray
+Parameters 			= integer array, length of array
+Return Type 			= integer array
+Description			= sort the numbers in ascending order
+Created on			= 25/05/2017
+*****************************************************************/
+SUB sortArray(arr, n)
+	DECLARE i, j, temp AS INTEGER
+	FOR i = 0 TO n-1
+		FOR i = 0 TO (n - 1 - i)
+			IF arr[i] > arr[i + 1]
+				//swap(arr[i], arr[i + 1])
+				temp = arr[i]
+				arr[i] = arr[i + 1]
+				arr[i + 1] = arr[i]
+			END IF
+		END FOR
+	END FOR
+	RETURN arr
+END SUB
+
+/************************************************************************
+Sub-Routine Name 		= binarySearch
+Parameters 			= integer array, start position of array, end position of array, number to be searched
+Return Type 			= integer
+Description			= search the number by using binary search
+Created on			= 25/05/2017
+*************************************************************************/
+SUB binarySearch(arr, low, high, num)
+	DECLARE mid, index AS INTEGER
+	mid = (low + high)/2
+	IF (arr[mid] == num)
+		index = mid
+	ELSE IF (arr[mid] > num) AND (high - low) > 1 
+		binarySearch(arr, low, mid, num)
+	ELSE IF (arr[mid] < num) AND (high - low) > 1
+		binarySearch(arr, mid+1, high, num)
+	ELSE
+		index = -1
+	END IF
+	RETURN index
+END SUB
+	
+			
+				
+	

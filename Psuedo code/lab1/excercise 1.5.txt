@@ -1,0 +1,14 @@
+BEGIN
+	DECLARE binnum,decnum,count AS INTEGER
+	INITIALIZE decnum TO 0,count TO 0
+	PROMPT "ENTER THE NINARY NUMBER"
+	ACCEPT binnum
+	WHILE binnum
+		IF binnum>0
+			sum=sum+ (2^ count)
+		END IF
+	BINNUM=BINNUM/10
+	COUNT+COUNT+1
+	END WHILE
+	PRINT "DECIMAL NUMBER IS",sum
+END

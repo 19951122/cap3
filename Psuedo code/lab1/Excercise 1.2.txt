@@ -1,0 +1,17 @@
+BEGIN
+	DECLARE noexpr AS INTEGER
+
+	PROMPT "enter the no of experience"
+	ACCEPT noexpr
+	
+	IF noexpr<3 THEN
+		PRINT "BLUE TAG"
+	ELSE IF noexpr<5 THEN
+		PRINT "GREY TAG"
+	ELSE IF noexpr<10 THEN
+		PRINT "YELLOW TAG"
+	ELSE noexpr>10 THEN
+		PRINT "RED TAG"
+	END IF
+END
+ 

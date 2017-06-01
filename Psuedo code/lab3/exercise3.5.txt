@@ -1,0 +1,44 @@
+/********************************************************************
+*Filename		= exercise3.5
+*Author name		= akhil
+*Description		= To find the number of occurences of a letter
+                          in a word
+*Version		= 1
+*Created On		= 24/05/2017
+********************************************************************/
+BEGIN 
+	DECALRE word AS STRING
+	DECLARE letter AS CHAR
+	DECLARE count AS INTEGER
+
+	//input
+	PROMPT "Enter the word" AND STORE IN word
+	PROMPT "Enter the character" AND STORE IN letter
+
+	//computations
+	count = findDuplicates(word, letter)
+
+	//output
+	PRINT "The number of duplicates is :", count
+END
+
+/*******************************************************************
+*Sub-routine Name	= findDuplicates
+*Parameters		= string, character
+*Return Type		= integer
+*Version 		= 1
+*Created On		= 24/5/2017
+*******************************************************************/
+SUB findDuplicates(word, letter)
+	DECLARE index AS INTEGER
+	DECLARE count AS INTEGER AND STORE 0
+	DECLARE length AS INTEGER
+	length = getLength(word)
+	FOR index = 0 TO (length - 1)
+		IF (word.charAt(index) == letter)
+			count = count + 1
+		END IF
+	END FOR
+	RETURN count
+END SUB
+	 

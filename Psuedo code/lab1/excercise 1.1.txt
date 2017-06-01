@@ -1,0 +1,28 @@
+BEGIN
+	DECLARE userid AS NUMBER
+	DECLARE username AS STRING
+	DECLARE fixedcharge AS CONSTANT=100
+	DECLARE lastmtr AS NUMBER
+	DECLARE curntmtr AS NUMBER
+	DECLARE unitsconsumed AS NUMBER
+	DECLARE netamount AS NUMBER
+	/// iNPUT 
+	
+	PROMPT "enter the user id"
+	ACCEPT userid
+	PROMPT "enter the user name"
+	ACCEPT username
+	PROMPT "LAST MONTH METER"
+	ACCEPT lastmtr
+	PROMPT "CURRENT MONTH METRER"
+	ACCEPT curntmtr
+	unitsconsumed=curntmtr-lastmtr
+	netamount=unitsconsumed*1.5+fixedcharge
+	PRINT "USER ID IS" + userid
+	PRINT "USER NAME IS" +username
+	PRINT "UNITS CONSUMED is" +unitsconsumed
+	PRINT "NET AMOUNT IS"+netamount
+END
+	
+	
+	

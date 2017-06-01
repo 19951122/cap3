@@ -1,0 +1,25 @@
+BEGIN
+	DECLARE num[10] AS INTEGER ARRAY
+	DECLARE index AS INTEGER
+	INITIALIZE index=0
+
+
+	PROMPT "ENTER THE TEN NUMBERS"
+	FOR index=0 TO 9
+		ACCEPT number[index]
+	END FOR
+	
+	PRINT "EVEN NUMBERS ARE"
+	FOR index=0 TO 9 
+		IF num[index]%2==0 THEN
+			PRINT num[index]
+		END IF
+	END FOR
+	
+	PRINT "ODD NUMBERS ARE"
+	FOR index=0 TO 9 
+		IF num[index]%2!==0 THEN
+			PRINT num[index]
+		END IF
+	END FOR
+END

@@ -1,0 +1,52 @@
+BEGIN
+	DECLARE word1 AS STRING
+	DECLARE word2 AS STRING
+	
+	
+	PROMPT " ENTER THE FIRST STRING"
+	ACCEPT word1
+
+	PROMPT " ENTER THE SECOND STRING"
+	ACCEPT word2
+
+	//subroutine
+	IF isSubstring(word1,word2) THEN
+		PRINT " THE SECOND STRING IS THE SUBSTRING OF FIRST STRING"
+	ELSE
+		PRINT " THE TWO STRINGS ARE NOT MATCHING"
+	END IF
+END
+
+
+SUB isSubstring(word1,word2)
+
+	DECLARE i AS INTEGER 
+	DECLARE j AS INTEGER
+	DECLARE length1 AS INTEGER
+	DECLARE length2 AS INTEGER
+	DECLARE isSubstring AS BOOLEAN AND STORE false
+
+	PROMPT " ENTER THE LENGTH OF FRST STRING"
+	ACCEPT length1
+
+	PROMPT " ENTER THE LENGTH OF SCND STRING"
+	ACCEPT length2
+
+
+	isSubstring(word1,word2)
+		FOR i=0 TO length1-length2
+			FOR j=0 TO length2-1
+			IF(word1.charAt(i+j)==s2.charAt(j)) THEN
+				isSubstring = true
+			ELSE
+				isSubstring = false
+				break
+			END IF
+		END FOR
+		IF (isSubstring)
+			BREAK
+		END FOR
+		RETURN isSubstring
+END SUB
+					
+			

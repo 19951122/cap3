@@ -1,0 +1,36 @@
+/*********************************************************************
+ * File                 : excercise2.2.txt
+ * Author Name          : akhil
+ * Desc                 : Program to accept a number and return the sum of its digits.
+ * Version              : 1.0
+ * Last Modified Date   : 23-May-2017
+ * Change Description   : header changes implemented
+ *********************************************************************/
+BEGIN	
+	DECLARE num,res AS INTEGER
+	PROMPT " enter the number"
+	ACCEPT num
+	res = sum(num)
+	PRINT "the sum of the number is",res
+END
+
+
+/*********************************************************************
+* Module Name         : sum of its digits
+* Input Parameters    : number
+* Return Type         : BOOLEAN
+* Author              : akhil
+* Creation Date       : 23-May-2017
+* Description         : sum of its digits
+ *********************************************************************/
+
+SUB sum(num)
+        DECLARE rem AS INTEGER
+	INITIALIZE rem=0	
+	WHILE num > 0
+		rem=rem+num%10
+		num=num/10
+	END WHILE
+	RETURN rem
+END SUB
+	

@@ -1,0 +1,30 @@
+RECORD Employee
+	DECLARE EmpId as INTEGER
+	DECLARE employmentType AS STRING
+END RECORD
+
+/*************************************************************************************
+*Filename 		= exercise2.4
+*Author Name		= akhil
+*Version		= 1
+*Created On 		= 23/05/2017 
+*************************************************************************************/
+BEGIN
+	DECLARE emp[5] AS Employee
+	DECLARE leaves, TotalLeaves, index AS INTEGER
+	FOR index 0 TO 4
+		PROMPT "Enter the EmployeeId" AND STORE IN emp[index].EmpId
+		PROMPT "Enter the employmentType" AND STORE IN emp[index].employmentType
+	END FOR
+	FOR index= 0 to 4
+		IF(emp[index].employmentType=='PERMANENT') THEN
+			leaves=2;
+			TotalLeaves=leaves*12;
+		ELSE IF(emp[index].employmentType=='CONTRACT') THEN
+			leaves=1;
+			TotalLeaves=leaves*12;
+		END IF
+		PRINT "Employee Id :" , emp.EmpId
+		PRINT "Total Available Leaves are :", TotalLeaves
+	END FOR
+END

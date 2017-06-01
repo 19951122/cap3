@@ -1,0 +1,37 @@
+/*********************************************************************
+ * File                 : 2.3.txt
+ * Author Name          : AKHIL
+ * Desc                 : Program to  
+ * Version              : 1.0
+ * Last Modified Date   : 23-May-2017
+ * Change Description   : Description about the changes implemented
+ *********************************************************************/
+BEGIN
+	DECLARE num[10] AS INTEGER ARRAY
+	DECLARE length,index AS INTEGER
+	
+	FOR index 0 TO 9
+	PROMPT " ENTER THE VALUE FOR" +index+1
+	ACCEPT num[index]
+	END FOR
+
+	length=unique(num)
+	PRINT "THE NUMBER OF UNIQUE VALUES ARE ",length
+END
+
+SUB unique(num)
+	DECLARE count AS INTEGER AND STORE 0
+	DECLARE first,second AS INTEGER
+	FOR first=0 TO 9
+		FOR second = 0 TO 9
+			IF (num[first]==num[second]) THEN
+			END IF
+	END FOR
+	IF(count==1) THEN
+		length=length+1
+	END IF
+	count=0
+	END FOR
+	RETURN length
+END SUB
+	

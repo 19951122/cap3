@@ -1,0 +1,51 @@
+/******************************************************************
+Filename 		= exercise4.3.txt
+Author 			= bhuvan
+Description		= to find the total price of a product
+Version			= 1
+Created on 		= 24/05/2017
+******************************************************************/
+BEGIN	
+	DECLARE p, q AS INTEGER
+	DECLARE CONSTANT tax_rate AS INTEGER AND STORE 0.56
+	PROMPT "Enter price of your product"
+	ACCEPT p
+	PROMPT "Enter quantity of your product"
+	ACCEPT q
+	IF ( validatePrice(p) AND validateQuan(q))
+		tc = p*q*tax_rate
+	END IF
+EXCEPTION
+	WHEN noSuchPrice THEN
+		PRINT //errorMessage
+	WHEN noSuchQuan
+		PRINT //errorMessage
+	PRINT "Total price of product is": tc
+END
+/*********************************************************************************
+Sub routine name 			= validatePrice
+parameter 				= price
+return type				= boolean
+description				= to validate the input price
+*******************************************************************************/
+SUB validatePrice(p)
+	IF (isDigits(p) AND p > 0)
+		RETURN true
+	ELSE 
+		RAISE noSuchPrice(" Enter a valid price")
+	END IF
+ENd SUB
+
+/******************************************************************************
+Sub routine name 			= validateQuan
+parameter 				= quantity
+return type				= true
+description				= to validate the input quantity
+******************************************************************************/
+SUB validateQuan(q)
+	IF(isDigits(q) AND q > 0)
+		RETURN true
+	ELSE
+		RAISE noSuchQuan("Enter a valid quantity")
+	END IF
+END SUB

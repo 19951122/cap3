@@ -1,0 +1,80 @@
+RECORD consumer
+	DECLARE consumerID AS STRING
+	DECLARE consumerName AS STRING
+	DECLARE lastMonReading AS INTEGER
+	DECLARE currMonReading AS INTEGER
+	DECLARE unitsConsumed AS INTEGER
+	DECLARE amount as FLOAT
+END RECORD
+
+/********************************************************************************
+*Filename 		= exercise2.4
+*Author Name		= akhil
+*Version		= 1
+*Created On 		= 23/05/2017 
+********************************************************************************/
+BEGIN
+	DECLARE consum AS consumer
+	consum = readDetails()
+	consum = calNetAMount(consum)
+	displayOutput(consum, amount)
+END
+
+/***************************************************************************
+*Filename		= exercise2.4
+*SubRoutine Name	= readDetails
+*Parameter 		= consumer
+*Return Type 		= consumer
+*Created On 		= 23/05/2017
+***************************************************************************/
+SUB readDetails(consum)
+	PROMPT "Enter the consumer ID"
+	ACCEPT 	consum.consumerID
+	PROMPT "Enter the consumer Name"
+	ACCEPT 	consum.consumerName
+	PROMPT "Enter the last month reading"
+	ACCEPT 	consum.lastMonReading
+	PROMPT "Enter the current month reading"
+	ACCEPT 	consum.currMonReading
+	RETURN consum
+ENDSUB
+
+/***************************************************************************
+*Filename		= exercise2.xx
+*SubRoutine Name	= calNetAmount
+*Parameter 		= consumer
+*Return Type 		= consumer
+*Created On 		= 23/05/2017
+***************************************************************************/
+SUB calNetAmount(consum)
+	DECLARE CONSTANT chargeFor100 AS FLOAT AND STORE 3.35
+	DECLARE CONSTANT chargeFor200 AS FLOAT AND STORE 4.49
+	DECLARE CONSTANT chargeFor300 AS FLOAT AND STORE 5.59
+	DECLARE CONSTANT fix_charge AS INTEGER AND STORE 100
+	CALCULATE consum.unitsConsumed = consum.currMonReading - cosum.lastMonReading
+	IF unitsConsumed > 200 THEN
+		CALCULATE consum.amount = ((consum.unitsConsumed - 200) * chargeFor300) + (100 * chargeFor200) + (100 * chargeFor100) + fix_charge
+	ENDIF
+	IF unitsConsumed > 100 AND unitsConsumed <= 200 THEN 
+		CALCULATE consum.amount = ((consum.unitsConsumed - 100) * chargeFor200) + (100 * chargeFor100) + fix_charge
+	ELSE
+		CALCULATE consum.amount = (consum.unitsConsumed * chargeFor100) + fix_charge
+	ENDIF	 
+	RETURN consum
+ENDSUB
+
+
+/***************************************************************************
+*Filename		= exercise2.xx
+*SubRoutine Name	= display
+*Parameter 		= consumer
+*Return Type 		= null
+*Created On 		= 23/05/2017
+***************************************************************************/
+SUB display(consum)
+	PRINT "User ID :", consum.consumerID
+	PRINT "User Name :", consum.consumerName
+	PRINT "Units Consumed :", consum.unitsConsumed
+	PRINT "Net Amount :", consum.amount
+ENDSUB
+	
